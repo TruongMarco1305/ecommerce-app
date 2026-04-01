@@ -21,9 +21,8 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      // Replace these with your actual Firebase Hosting URLs after deployment
-      // "https://your-shop-app.web.app",
-      // "https://your-admin-app.web.app",
+      "https://ecommerce-aa732.web.app",
+      "https://admin-ecommerce-aa732.web.app",
     ],
   })
 );
