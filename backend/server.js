@@ -16,7 +16,17 @@ connectCloudinary();
 
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      // Replace these with your actual Firebase Hosting URLs after deployment
+      // "https://your-shop-app.web.app",
+      // "https://your-admin-app.web.app",
+    ],
+  })
+);
 
 // api endpoints
 app.use("/api/user", userRouter);
