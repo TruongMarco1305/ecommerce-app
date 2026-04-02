@@ -14,6 +14,7 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState("");
+  const [userProfile, setUserProfile] = useState(null);
   const navigate = useNavigate();
 
   const addToCart = async (itemId, size) => {
@@ -134,6 +135,39 @@ const ShopContextProvider = (props) => {
     }
   };
 
+  const fetchUserProfile = async (tkn) => {
+    try {
+      const response = await axios.get(backendUrl + "/api/user/profile", {
+        headers: { token: tkn },
+      });
+      if (response.data.success) {
+        setUserProfile(response.data.user);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const saveUserProfile = async (data) => {
+    try {
+      const response = await axios.put(backendUrl + "/api/user/profile", data, {
+        headers: { token },
+      });
+      if (response.data.success) {
+        setUserProfile((prev) => ({ ...prev, ...data }));
+        toast.success("Profile updated!");
+        return true;
+      } else {
+        toast.error(response.data.message);
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+      return false;
+    }
+  };
+
   useEffect(() => {
     getProductsData();
   }, []);
@@ -142,6 +176,7 @@ const ShopContextProvider = (props) => {
     if (!token && localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
       getUserCart(localStorage.getItem("token"));
+      fetchUserProfile(localStorage.getItem("token"));
     }
   }, []);
 
@@ -163,6 +198,10 @@ const ShopContextProvider = (props) => {
     backendUrl,
     setToken,
     token,
+    userProfile,
+    setUserProfile,
+    fetchUserProfile,
+    saveUserProfile,
   };
 
   return (

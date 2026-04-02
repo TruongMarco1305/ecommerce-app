@@ -4,7 +4,8 @@ import { assets } from "../assets/assets";
 const Footer = () => {
   return (
     <div className="bg-bamboo-700 text-cream mt-20">
-      <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 py-14 px-6 text-sm">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
+      <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 py-14 text-sm">
         <div>
           <img className="mb-5 w-32 brightness-0 invert" src={assets.logo} alt="logo" />
           <p className="w-full md:w-2/3 text-bamboo-100 leading-relaxed">
@@ -37,6 +38,7 @@ const Footer = () => {
         <p className="py-5 text-sm text-center text-bamboo-200">
           Copyright 2024 © BambooShop — All Rights Reserved.
         </p>
+      </div>
       </div>
     </div>
   );

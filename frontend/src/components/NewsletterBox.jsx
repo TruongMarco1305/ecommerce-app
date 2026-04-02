@@ -6,7 +6,7 @@ const NewsletterBox = () => {
   };
 
   return (
-    <div className="text-center py-12 bg-bamboo-50 rounded-lg px-4">
+    <div className="text-center py-12 rounded-lg px-4">
       <p className="text-2xl font-heading font-semibold text-bamboo-700">
         Subscribe & Get 20% Off
       </p>
