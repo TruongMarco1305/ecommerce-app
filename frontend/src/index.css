@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -9,13 +9,12 @@ a.active hr {
 }
 
 * {
-  font-family: Outfit;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #2d4a3e;
 }
 
-.prata-regular {
-  font-family: "Prata", serif;
-  font-weight: 400;
-  font-style: normal;
+.bamboo-heading {
+  font-family: 'Playfair Display', serif;
 }
 
 ::-webkit-scrollbar {
@@ -24,7 +23,7 @@ a.active hr {
 
 @media (max-width: 640px) {
   a.active {
-    background-color: black;
-    color: white;
+    background-color: #4a7c59;
+    color: #f5f0e8;
   }
 }

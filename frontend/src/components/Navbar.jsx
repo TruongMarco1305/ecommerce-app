@@ -22,30 +22,30 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between py-5 font-medium">
+    <div className="flex items-center justify-between py-5 font-medium bg-cream border-b border-bamboo-100">
       <Link to="/">
         <img src={assets.logo} className="w-36" alt="logo" />
       </Link>
 
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
-        <NavLink to={"/"} className="flex flex-col items-center gap-1">
-          <p>HOME</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+      <ul className="hidden sm:flex gap-5 text-sm text-bamboo-600">
+        <NavLink to={"/"} className="flex flex-col items-center gap-1 hover:text-bamboo-500 transition-colors">
+          <p className="tracking-wide">HOME</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-bamboo-500 hidden" />
         </NavLink>
         <NavLink
           to={"/collection"}
-          className="flex flex-col items-center gap-1"
+          className="flex flex-col items-center gap-1 hover:text-bamboo-500 transition-colors"
         >
-          <p>COLLECTION</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+          <p className="tracking-wide">COLLECTION</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-bamboo-500 hidden" />
         </NavLink>
-        <NavLink to={"/about"} className="flex flex-col items-center gap-1">
-          <p>ABOUT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        <NavLink to={"/about"} className="flex flex-col items-center gap-1 hover:text-bamboo-500 transition-colors">
+          <p className="tracking-wide">ABOUT</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-bamboo-500 hidden" />
         </NavLink>
-        <NavLink to={"/contact"} className="flex flex-col items-center gap-1">
-          <p>CONTACT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+        <NavLink to={"/contact"} className="flex flex-col items-center gap-1 hover:text-bamboo-500 transition-colors">
+          <p className="tracking-wide">CONTACT</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-bamboo-500 hidden" />
         </NavLink>
       </ul>
 

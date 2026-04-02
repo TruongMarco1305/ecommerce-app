@@ -59,7 +59,26 @@ const addProduct = async (req, res) => {
 // function for list product
 const ListProduct = async (req, res) => {
   try {
-    const products = await productModel.find({});
+    const { category, subCategory, minPrice, maxPrice, minRating } = req.query;
+
+    const filter = {};
+
+    if (category) {
+      filter.category = { $in: category.split(",") };
+    }
+    if (subCategory) {
+      filter.subCategory = { $in: subCategory.split(",") };
+    }
+    if (minPrice !== undefined || maxPrice !== undefined) {
+      filter.price = {};
+      if (minPrice !== undefined) filter.price.$gte = Number(minPrice);
+      if (maxPrice !== undefined) filter.price.$lte = Number(maxPrice);
+    }
+    if (minRating !== undefined && Number(minRating) > 0) {
+      filter.averageRating = { $gte: Number(minRating) };
+    }
+
+    const products = await productModel.find(filter);
     res.json({ success: true, products });
   } catch (error) {
     console.log(error);
