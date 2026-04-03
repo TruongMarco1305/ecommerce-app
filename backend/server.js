@@ -20,12 +20,7 @@ connectCloudinary();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "https://ecommerce-aa732.web.app",
-      "https://admin-ecommerce-aa732.web.app",
-    ],
+    origin: '*',
   })
 );
 
