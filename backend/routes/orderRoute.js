@@ -1,11 +1,12 @@
 import express from "express";
 import {
   placeOrder,
-  placeOrderStripe,
+  placeOrderVietQR,
   allOrders,
   userOrders,
   updateStatus,
-  verifyStripe,
+  verifyVietQR,
+  cancelPending,
 } from "../controllers/orderController.js";
 import adminAuth from "../middleware/adminAuth.js";
 import authUser from "../middleware/auth.js";
@@ -18,12 +19,13 @@ orderRouter.post("/status", adminAuth, updateStatus);
 
 // Payment Features
 orderRouter.post("/place", authUser, placeOrder);
-orderRouter.post("/stripe", authUser, placeOrderStripe);
+orderRouter.post("/vietqr", authUser, placeOrderVietQR);
 
 // user Feature
 orderRouter.post("/userorders", authUser, userOrders);
 
-// verify payment
-orderRouter.post("/verifyStripe", authUser, verifyStripe);
+// verify / cancel payment
+orderRouter.post("/verifyVietQR", authUser, verifyVietQR);
+orderRouter.post("/cancelPending", authUser, cancelPending);
 
 export default orderRouter;

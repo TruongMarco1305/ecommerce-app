@@ -1,49 +1,20 @@
 import React, { useContext, useEffect } from "react";
 import { ShopContext } from "../context/ShopContext";
-import { useSearchParams } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-toastify";
 
+// This page is kept for legacy URL compatibility.
+// VietQR payment confirmation is now handled inline on the PlaceOrder page.
 const Verify = () => {
-  const { navigate, token, setCartItems, backendUrl } = useContext(ShopContext);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const success = searchParams.get("success");
-  const orderId = searchParams.get("orderId");
-
-  const verifyPayment = async () => {
-    try {
-      if (!token) {
-        return null;
-      }
-
-      const response = await axios.post(
-        backendUrl + "/api/order/verifyStripe",
-        { success, orderId },
-        { headers: { token } }
-      );
-
-      if (response.data.success) {
-        setCartItems({});
-        navigate("/orders");
-      } else {
-        navigate("/cart");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
-    }
-  };
+  const { navigate } = useContext(ShopContext);
 
   useEffect(() => {
-    verifyPayment();
-  }, [token]);
+    navigate("/orders", { replace: true });
+  }, []);
 
   return (
-    <div>
-      {/* Verify */}
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-bamboo-500 border-t-transparent rounded-full animate-spin" />
     </div>
-  )
+  );
 };
 
 export default Verify;
